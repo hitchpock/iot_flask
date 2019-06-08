@@ -1,0 +1,70 @@
+84583942429820
+39241043957861
+26546164911562
+72748262403640
+76366641557605
+80790352329178
+42587489598497
+55547047882161
+47277452272106
+04150271260393
+choises=[('57651140987083', '52016726902762', '82676944256537')]
+
+<!-- <html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Microblog</title>
+      {% else %}
+      <title>Welcome to Microblog</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>Microblog: 
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('create_group') }}">Create group</a>
+            <a href="{{ url_for('group_list') }}">Group list</a>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html> -->
+
+<nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">eDispatcher</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('group_list') }}">Group list</a></li>
+                    <li><a href="{{ url_for('create_group') }}">Create group</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<form action="" method="post">
+        {{ form.hidden_tag() }}
+        {% for user in data %}
+        <div><p>
+            {{ user.fullname }}
+        </p></div>
+        {% endfor %}
+        <p>
+            {{ form.groupname.label }} <br>
+            {{ form.groupname(size = 32) }} <br>
+        </p>
+
+        <p>
+            {{ form.lora_id.label }} <br>
+            {{ form.lora_id }} <br>
+        </p>
+        <p>{{ form.submit }}</p>
+    </form>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Список групп</h1>
+    <div id="accordion">
+        {% for group in lst %}
+        <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#{{group.id}}" aria-expanded="true" aria-controls="collapseOne">
+                      {{ group.name }}
+                    </button> <br>
+                    {% if group.button == 1 %}
+                    <p style="font-size: 14px; margin-left: 13px; display: inline-block">Есть запрос: </p>
+                        {% if group.check == 1 %}
+                        <p style="font-size: 14px; display: inline-block;">Все в укрытии</p>
+                        {% else %}
+                        <p style="font-size: 14px; display: inline-block;">Кто то не в укрытии</p>
+                        {% endif %}
+                    {% endif %}
+                  </h5>
+                </div>
+                <div id="{{group.id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                                {% for w in group.workers_list %}
+                                    <p>{{ w.fullname }} :
+                                            {% if w.insafe == 1 %}
+                                            <b>На точке!</b>
+                                            {% else %}
+                                            <b>Не на точке</b>
+                                            {% endif %}
+                                    </p>
+                                {% endfor %}
+                        </div>
+                </div>
+        {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}
+
+
+
+{% for group in lst %}
+    <p><b>
+        {{ group.name }}
+    </b></p>
+        {% for w in group.workers_list %}
+            <p>{{ w.fullname }}</p>
+        {% endfor %}
+    {% endfor %}

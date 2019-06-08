@@ -1,0 +1,30 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - eDispatcher{% else %}eDispatcher{% endif %}
+{% endblock %}
+
+
+{% block navbar %}
+<ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index') }}">eDispatcher</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('group_list') }}">Список групп</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('create_group') }}">Создать группу</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('delete_group') }}">Удалить группу</a>
+              </li>
+      </ul>
+{% endblock %}
+
+
+{% block content %}
+
+    {% block app_content %}{% endblock %}
+
+{% endblock %}

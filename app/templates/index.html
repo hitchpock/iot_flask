@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Привет, {{ user.username }}</h1>
+    <ul class="list-group list-group-flush">
+            {% for note in data %}
+            <li class="list-group-item">{{ note.fullname }} :
+                    {% if note.insafe == 1 %}
+                    <b>На точке!</b>
+                    {% else %}
+                    <b>Не на точке</b>
+                    {% endif %}
+            </li>
+            {% endfor %}
+    </ul>
+    
+{% endblock %}

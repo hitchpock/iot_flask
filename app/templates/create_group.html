@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Создание группы</h1>
+    <P>Входная группа:</P>
+    <ul class="list-group">
+        {% for i in data %}
+        <li class="list-group-item">{{ i.fullname }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <div class="row">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    
+{% endblock %}
