@@ -22,15 +22,28 @@
                 </div>
                 <div id="{{group.id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                                {% for w in group.workers_list %}
-                                    <p>{{ w.fullname }} :
-                                            {% if w.insafe == 1 %}
-                                            <b>На точке!</b>
-                                            {% else %}
-                                            <b>Не на точке</b>
-                                            {% endif %}
-                                    </p>
-                                {% endfor %}
+                                <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">Имя</th>
+                                            <th scope="col">Статус</th>
+                                            <th scope="col">Номер карты</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for w in group.workers_list %}
+                                            <tr>
+                                                <td>{{ w.fullname }}</th>
+                                                {% if w.insafe == 1 %}
+                                                <td>В безопасности</th>
+                                                {% else %}
+                                                <td><b>Не в безопасности</b></th>
+                                                {% endif %}
+                                                <td>{{ w.uid }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                </table>
                         </div>
                 </div>
         {% endfor %}
@@ -38,14 +51,3 @@
     </div>
     
 {% endblock %}
-
-
-
-{% for group in lst %}
-    <p><b>
-        {{ group.name }}
-    </b></p>
-        {% for w in group.workers_list %}
-            <p>{{ w.fullname }}</p>
-        {% endfor %}
-    {% endfor %}

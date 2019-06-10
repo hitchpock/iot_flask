@@ -6,7 +6,7 @@
 
 
 {% block navbar %}
-<ul class="nav">
+    <ul class="nav" style="margin-left: 13%;">
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('index') }}">eDispatcher</a>
         </li>
@@ -17,14 +17,18 @@
           <a class="nav-link" href="{{ url_for('create_group') }}">Создать группу</a>
         </li>
         <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('delete_group') }}">Удалить группу</a>
-              </li>
+          <a class="nav-link" href="{{ url_for('delete_group') }}">Удалить группу</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('chart') }}">Аналитика</a>
+        </li>
       </ul>
 {% endblock %}
 
 
 {% block content %}
-
+    <div class="container">
     {% block app_content %}{% endblock %}
+    </div>
 
 {% endblock %}

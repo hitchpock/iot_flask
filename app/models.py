@@ -7,16 +7,13 @@ Base = declarative_base()
 
 class Group(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(16), index=True)
+    name = db.Column(db.String(256), index=True)
     workers_list = db.relationship('Worker', secondary='links', cascade='save-update')
     dtime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     button = db.Column(db.Boolean, default=False)
     active = db.Column(db.Boolean, default=True)
-    lora_id = db.Column(db.String(14), index=True, unique=True)
+    lora_id = db.Column(db.String(14), index=True)
     endtime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    
-    def __init__():
-        self.check = checking()
     
     def checking(self):
         

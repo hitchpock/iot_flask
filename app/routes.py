@@ -1,4 +1,5 @@
 from flask import render_template, redirect, url_for
+from flask import Markup
 from app import app, db
 from app.models import Worker, Group, EnterGroup
 from app.forms import CreateButton, DeleteGroup
@@ -52,3 +53,20 @@ def delete_group():
         db.session.commit()
         return redirect(url_for('delete_group'))
     return render_template('delete_group.html', form=form)
+
+
+@app.route('/chart', methods=['GET', 'POST'])
+def chart():
+    groups = Group.query.all()
+    groups_dict = {}
+    second_lst = []
+    for group in groups:
+        if groups_dict.get(group.lora_id) is not None:
+            groups_dict[group.lora_id]['date'].append(datetime.strftime(group.dtime, "%d-%m-%Y"))
+            groups_dict[group.lora_id]['count'].append(len(group.workers_list))
+        else:
+            groups_dict[group.lora_id] = {'date': [datetime.strftime(group.dtime, "%d-%m-%Y")],\
+                'count': [len(group.workers_list)]}
+    for k, v in groups_dict.items():
+        second_lst.append({'number': k, 'data': v})
+    return render_template('chart.html', dct=second_lst)
