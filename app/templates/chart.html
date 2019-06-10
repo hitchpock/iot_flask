@@ -2,7 +2,7 @@
 
 {% block app_content %}
 
-    <h1>Список групп</h1>
+    <h1>Список площадок</h1>
     <script src='static/Chart.min.js'></script>
     <div id="accordion">
         {% for group in dct %}
@@ -17,7 +17,6 @@
                 <div id="{{group.id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                                 <canvas id="{{group.number}}" width="600" height="400"></canvas>
-                                <p id="caption">The chart is displaying a simple line chart.</p>
 
                                 <script>
                                 // Global parameters:

@@ -9,9 +9,8 @@ from datetime import datetime
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    user = {'username': 'Начальник'}
     workers = Worker.query.all()
-    return render_template('index.html', title='Home', user=user, data=workers)
+    return render_template('index.html', title='Home', data=workers)
 
 
 @app.route('/group_list', methods=['GET', 'POST'])
