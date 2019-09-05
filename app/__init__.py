@@ -1,3 +1,7 @@
+"""
+Обязательный файл для того чтобы работать как с модулем. У всех модулей есть __init__.py
+Просто подключаем все что есть.
+"""
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
